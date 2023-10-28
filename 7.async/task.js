@@ -9,11 +9,11 @@ class AlarmClock {
             throw new Error('Отсутствуют обязательные аргументы');
         }
 
-        if (this.alarmCollection.find(timer => timer.time === startTime) !== -1) {
+        if (this.alarmCollection.find(timer => timer.time === startTime)) {
             console.warn('Уже присутствует звонок на это же время');
         } 
 
-        this.alarmCollection.push({'callback': doAction, 'time': startTime, 'canCall': true});
+        this.alarmCollection.push({callback: doAction, time: startTime, canCall: true});
     }
 
     removeClock(time) {
@@ -21,7 +21,7 @@ class AlarmClock {
     }
 
     getCurrentFormattedTime() {
-        return `${new Date().getHours()}:${new Date().getMinutes()}`;
+        return (new Date().toLocaleTimeString()).slice(0, 5);
     }
 
     start() {
@@ -40,7 +40,7 @@ class AlarmClock {
     }
 
     stop() {
-        // какая ещё функция clearInterval ?
+        clearInterval(this.intervalId);
         this.intervalId = null;
     }
 
