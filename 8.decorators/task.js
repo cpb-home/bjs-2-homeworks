@@ -10,7 +10,7 @@ function cachingDecoratorNew(func) {
     }
 
     const result = func(...args);
-    if (cache.length < 5) {
+    if (cache.length < maxCacheValuesCount) {
       cache.push({[hash]: result});
     } else {
       cache.shift();
