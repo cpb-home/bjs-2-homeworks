@@ -1,9 +1,39 @@
-class PrintEditionItem {
+/*class PrintEditionItem {
   constructor(name, releaseDate, pagesCount) {
     this.name = name;
     this.releaseDate = releaseDate;
     this.pagesCount = pagesCount;
     this._state = 100;
+    this.type = null;
+  }
+
+  set state(tempState) {
+    if (tempState < 0) {
+      this._state = 0;
+    } else if (tempState > 100) {
+      this._state = 100;
+    } else {
+      this._state = tempState;
+    }
+  }
+
+  get state() {
+    return this._state;
+  }
+
+  fix() {
+    const fixLevel = 1.5;
+    const tempState = this._state * fixLevel;
+    this.state = tempState;
+  }
+}*/
+
+class PrintEditionItem {
+  constructor(name, releaseDate, pagesCount) {
+    this.name = name;
+    this.releaseDate = releaseDate;
+    this.pagesCount = pagesCount;
+    this.state = 100;
     this.type = null;
   }
 
